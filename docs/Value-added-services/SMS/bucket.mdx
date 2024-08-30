@@ -1,0 +1,94 @@
+---
+sidebar_position: 1
+---
+import Accordion from "@site/src/components/Accordion";
+import AccordionCode from "@site/src/components/AccordionCode";
+import {
+  createBucketAPI,
+  getBucketResponse,
+  createBucketResponse,
+  updateBucketResponse,
+  deleteBucketResponse,
+} from "@site/src/data/ValueAddedServicesDocs/data";
+
+
+# BUCKET
+
+##### A bucket is a collection of phone numbers that can be uploaded, organized into an excel format
+
+### CREATE BUCKET
+
+This endpoint allows you to create a bucket which contains all the phone numbers to be reached via sms.
+
+<Accordion
+  items={createBucketAPI}
+  parameters={true}
+  endpoint={"https://squadbygtco.com:8080/dashboard/bucket"}
+  method={"POST"}
+  header={"This API creates SMS Bucket"}
+/>
+
+#### Sample Request
+
+```js
+{
+  "name": "nov2022",
+    "description": "November birthdays",
+    "client_id": 1,
+    "items": [
+        {
+            "phone_number": "07012345678",
+            "param1": "012"
+        },
+        {
+            "phone_number": "07012345678",
+            "param1": "012"
+        }
+    ]
+
+}
+```
+
+<AccordionCode items={createBucketResponse} />
+
+### GET ALL CREATED BUCKETS
+
+This endpoint allows you to retrieve created buckets
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/bucket/by-client/1?page=1&count=10"}
+  method={"GET"}
+  header={"This API retrieves all Bucket"}
+/>
+
+<AccordionCode items={getBucketResponse} />
+
+### UPDATE CREATED BUCKETS
+
+This endpoint allows you to edit details for already created buckets. It allows editing the name of the bucket
+<Accordion
+  items={createBucketAPI}
+  parameters={true}
+  endpoint={"https://squadbygtco.com:8080/dashboard/bucket"}
+  method={"POST"}
+  header={"This API creates SMS Bucket"}
+/>
+
+<AccordionCode items={updateBucketResponse} />
+
+####    Sample Request
+```js
+{
+    "name":"nov2023_bucket"
+}
+```
+
+### DELETE CREATED BUCKETS
+This endpoint allows you to delete a bucket
+
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/bucket/1"}
+  method={"POST"}
+  header={"This API deletes created Bucket"}
+/>
+
+<AccordionCode items={deleteBucketResponse} />

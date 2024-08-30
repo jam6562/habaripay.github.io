@@ -229,6 +229,7 @@ export const getDataBundlesResponse = [
   },
 ];
 
+
 export const getAllTransactionsAPI = [
   {
     title: "Query",
@@ -346,5 +347,727 @@ export const getAllTransactionsResponse = [
             "message": "Merchant authentication failed",
             "data": {}
 }`,
+  },
+];
+
+export const createBucketAPI = [
+  {
+    title: "Body",
+    children: [
+      {
+        key: "name",
+        dataType: "String",
+        description: "Name of Bucket",
+        required: true,
+      },
+      {
+        key: "Description",
+        dataType: "String",
+        description: "Description of Bucket",
+        required: true,
+      },
+      {
+        key: "Cliet_id",
+        dataType: "Integer",
+        description: "Unique client ID as pre-assigned",
+        required: true,
+      },
+      {
+        key: "items",
+        dataType: "object",
+        description: "Phone number and detail of each",
+        required: true,
+      },
+    ],
+  },
+];
+
+export const createBucketResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
+            "status": "CREATED",
+            "message": "bucket created successfully",
+            "data": {
+              "id": 2,
+              "name": "nov2022",
+              "description": "november birthdays",
+              "params": [
+                  "phone_number",
+                  "param1"
+              ],
+              "client_id": 1,
+              "created_at": "2024-04-08T11:55:08.000Z",
+              "created_by": 1,
+              "updated_at": null,
+              "updated_by": null,
+              "bucket_items": 2
+            }
+}`
+  },
+];
+
+export const getBucketResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
+            "status": "CREATED",
+            "message": "bucket created successfully",
+            "data": {
+              "id": 2,
+              "name": "nov2022",
+              "description": "november birthdays",
+              "params": [
+                  "phone_number",
+                  "param1"
+              ],
+              "client_id": 1,
+              "created_at": "2024-04-08T11:55:08.000Z",
+              "created_by": 1,
+              "updated_at": null,
+              "updated_by": null,
+              "bucket_items": 2
+            }
+}`
+  },
+];
+
+export const updateBucketResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
+            "message": "success",
+            "data": {
+                "id": 1,
+                "name": "nov2023_bucket",
+                "description": "november birthdays",
+                "params": [
+                    "phone_number",
+                    "param1"
+                ],
+                "client_id": 1,
+                "created_at": "2024-02-29T11:22:51.000Z",
+                "created_by": 8,
+                "updated_at": "2024-04-08T12:47:21.000Z",
+                "updated_by": 1
+              }
+}`
+  },
+];
+
+export const deleteBucketResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
+          "message": "success"
+}`
+  },
+];
+
+export const createTemplateAPI = [
+  {
+    title: "Body",
+    children: [
+      {
+        key: "name",
+        dataType: "String",
+        description: "Name of Template",
+        required: true,
+      },
+      {
+        key: "Body",
+        dataType: "String",
+        description: "Actual template form to be used continuously",
+        required: true,
+      },
+      {
+        key: "Cliet_id",
+        dataType: "Integer",
+        description: "Unique client ID pre-assigned",
+        required: true,
+      },
+      {
+        key: "Description",
+        dataType: "String",
+        description: "Description of template",
+        required: true,
+      },
+    ],
+  },
+];
+
+export const createTemplateResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "CREATED",
+        "message": "template created successfully",
+        "data": {
+            "id": 5,
+            "name": "CHDP_C",
+            "description": "CASH DEPOSIT CREDITING",
+            "client_id": 2,
+            "created_at": "2024-04-08T13:02:44.000Z",
+            "created_by": 1,
+            "updated_at": null,
+            "updated_by": null
+        }
+}`
+  },
+];
+
+export const getTemplateResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "SUCCESS",
+        "message": "templates retrieved successfully",
+        "data": {
+            "items": [
+                {
+                    "id": 2,
+                    "name": "FTRQ_D",
+                    "body": "Txn: Debit\nAc:#$TXN_ACC$#\nAmt:#$AMOUNT$#\nDes:AAC/Debit/Funds Transfer/#$TRANSACTION_ID$#\nDate:#$TXN_DATE$#\nBal:#$AVAIL_BAL$#\n#$sms_advert$#",
+                    "description": "FUNDS TRANSFER DEBIT",
+                    "client_id": 2,
+                    "params": [
+                        "phone_number",
+                        "TXN_ACC",
+                        "AMOUNT",
+                        "TRANSACTION_ID",
+                        "TXN_DATE",
+                        "AVAIL_BAL",
+                        "sms_advert"
+                    ],
+                    "created_at": "2024-03-20T20:28:53.000Z",
+                    "created_by": 10,
+                    "updated_at": "2024-03-26T06:48:22.000Z",
+                    "updated_by": 10
+                },
+                {
+                    "id": 3,
+                    "name": "FTRQ_C",
+                    "body": "Credit\nAc:#$OFS_ACC$#\nAmt:#$CCY$##$AMOUNT$#\nDes:AAC/Credit/Funds Transfer/#$TRANSACTION_ID$#\nDate:#$TXN_DATE$#\nBal:#$CCY$##$AVAIL_BAL$#\n#$sms_advert$#",
+                    "description": "FUNDS TRANSFER CREDIT",
+                    "client_id": 2,
+                    "params": [
+                        "phone_number",
+                        "OFS_ACC",
+                        "CCY",
+                        "AMOUNT",
+                        "TRANSACTION_ID",
+                        "TXN_DATE",
+                        "CCY",
+                        "AVAIL_BAL",
+                        "sms_advert"
+                    ],
+                    "created_at": "2024-03-20T20:31:37.000Z",
+                    "created_by": 10,
+                    "updated_at": "2024-03-26T06:53:23.000Z",
+                    "updated_by": 10
+                },
+                {
+                    "id": 4,
+                    "name": "CHDP_C",
+                    "body": "Txn: Credit\nAc:#$TXN_ACC$#\nAmt:#$AMOUNT$#\nDes:Cash Dep/_BRC_/#$OFS_ACC$#/#$TRANSACTION_ID$#\nDate:#$TXN_DATE$#\nBal#$CCY$##$AVAIL_BAL$#\n#$sms_advert$#",
+                    "description": "CASH DEPOSIT CREDIT",
+                    "client_id": 2,
+                    "params": [
+                        "phone_number",
+                        "TXN_ACC",
+                        "AMOUNT",
+                        "OFS_ACC",
+                        "TRANSACTION_ID",
+                        "TXN_DATE",
+                        "CCY",
+                        "AVAIL_BAL",
+                        "sms_advert"
+                    ],
+                    "created_at": "2024-03-20T20:39:02.000Z",
+                    "created_by": 10,
+                    "updated_at": "2024-03-26T06:53:09.000Z",
+                    "updated_by": 10
+                },
+                {
+                    "id": 5,
+                    "name": "CHDP_C",
+                    "body": "Txn: Credit\nAc:#$TXN_ACC$#\nAmt:#$AMOUNT$#\nDes:Cash Dep/_BRC_/#$OFS_ACC$#/#$TRANSACTION_ID$#\nDate:#$TXN_DATE$#\nBal#$CCY$##$AVAIL_BAL$#\n#$sms_advert#",
+                    "description": "CASH DEPOSIT CREDITING",
+                    "client_id": 2,
+                    "params": [
+                        "phone_number",
+                        "TXN_ACC",
+                        "AMOUNT",
+                        "OFS_ACC",
+                        "TRANSACTION_ID",
+                        "TXN_DATE",
+                        "CCY",
+                        "AVAIL_BAL"
+                    ],
+                    "created_at": "2024-04-08T13:02:44.000Z",
+                    "created_by": 1,
+                    "updated_at": null,
+                    "updated_by": null
+                }
+            ],
+            "total": 4
+        }
+    }`
+  },
+];
+
+export const updateTemplateAPI = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+    "message": "success"
+}`
+  },
+];
+
+export const updateTemplateResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{ 
+          "status": "SUCCESS",
+          "message": "template updated successfully",
+          "data": {
+              "id": 3,
+              "name": "FTRQ_C",
+              "description": "FUNDS TRANSFER CREDIT",
+              "client_id": 2,
+              "created_at": "2024-03-20T20:31:37.000Z",
+              "created_by": 10,
+              "updated_at": "2024-04-08T13:08:32.000Z",
+              "updated_by": 1
+          }
+}`
+  },
+];
+
+export const deleteTemplateResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+    "message": "success"
+}`
+  },
+];
+
+export const sendMessageAPI = [
+  {
+    title: "Body",
+    children: [
+      {
+        key: "is_campaign",
+        dataType: "Boolean",
+        description: "Set true if message is a campaign",
+        required: true,
+      },
+      {
+        key: "reference",
+        dataType: "String",
+        description: "Optional reference but necessary to group campaign",
+        required: false,
+      },
+      {
+        key: "use_bucket",
+        dataType: "Boolean",
+        description: "Set true if using bucket",
+        required: false,
+      },
+      {
+        key: "recipients",
+        dataType: "Integer",
+        description: "If use bucket is true, use bucket ID else use recipient nunmber",
+        required: true,
+      },
+      {
+        key: "use_template",
+        dataType: "Boolean",
+        description: "Set true if template is to be used",
+        required: false,
+      },
+      {
+        key: "body",
+        dataType: "String",
+        description: "if use_template is true, use template ID else use message in text box",
+        required: true,
+      },
+      {
+        key: "sender",
+        dataType: "String",
+        description: "Optional. You can get it from route/:client_ID",
+        required: false,
+      },
+    ],
+  },
+];
+
+export const getAllCampaignResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "SUCCESS",
+        "message": "campaigns retrieved successfully",
+        "data": {
+            "items": [
+                {
+                    "id": 1,
+                    "name": "abc_123",
+                    "client_id": 1,
+                    "template_id": 1,
+                    "bucket_id": 1,
+                    "total": 2,
+                    "created_at": "2024-02-29T11:27:13.000Z",
+                    "created_by": null
+                }
+            ],
+            "total": 1
+        }
+}`
+  },
+];
+
+export const getCampaignResponse = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "SUCCESS",
+        "message": "campaign messages retrieved successfully",
+        "data": {
+            "items": [],
+            "total": [
+                {
+                    "total": "0"
+                }
+            ]
+        }
+}`
+  },
+];
+
+export const getAllCampaignStat = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "SUCCESS",
+        "message": "statistics retrieved successfully",
+        "data": {
+            "submitted": 0,
+            "invalid": 0,
+            "sent": 1,
+            "absent": 0,
+            "failed": 0,
+            "delivered": 19,
+            "deliveryFailed": 2
+        }
+}`
+  },
+];
+export const getCampaignStat = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "SUCCESS",
+        "message": "campaign statistics retrieved successfully",
+        "data": {
+            "submitted": 0,
+            "invalid": 0,
+            "sent": 1,
+            "absent": 0,
+            "failed": 0,
+            "delivered": 19,
+            "deliveryFailed": 2
+        }
+}`
+  },
+];
+
+export const getMessageByPhone = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "SUCCESS",
+        "message": "phone messages retrieved successfully",
+        "data": {
+            "items": [],
+            "total": [
+                {
+                    "total": "0"
+                }
+            ]
+        }
+}`
+  },
+];
+
+export const getHourlyStat = [
+  {
+    status: "200:OK",
+    responseMsg: "Success",
+    pill: colors.greenColor,
+    code: `{
+        "status": "SUCCESS",
+        "message": "hourly statistics retrieved successfully",
+        "data": {
+            "submitted_count": 0,
+            "sent_count": 0,
+            "invalid_count": 0,
+            "successful_count": 0,
+            "failed_count": 0,
+            "absent_count": 0,
+            "avg_queue_time": 0,
+            "avg_delivery_time": 0,
+            "oldest_on_queue": null,
+            "queue_count": null,
+            "detail": [
+                {
+                    "hour": "00:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "01:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "02:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "03:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "04:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "05:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "06:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "07:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "08:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "09:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "10:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "11:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "12:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "13:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "14:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "15:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "16:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "17:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "18:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "19:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "20:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "21:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "22:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                },
+                {
+                    "hour": "23:00",
+                    "submitted_count": 0,
+                    "sent_count": 0,
+                    "invalid_count": 0,
+                    "successful_count": 0,
+                    "failed_count": 0,
+                    "absent_count": 0
+                }
+            ]
+        }
+}`
   },
 ];
