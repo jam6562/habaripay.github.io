@@ -1,0 +1,92 @@
+---
+sidebar_position: 3
+---
+import Accordion from "@site/src/components/Accordion";
+import AccordionCode from "@site/src/components/AccordionCode";
+import {
+  sendMessageAPI,
+  getAllCampaignResponse,
+  getCampaignResponse,
+  getAllCampaignStat,
+  getCampaignStat,
+  getMessageByPhone,
+  getHourlyStat,
+} from "@site/src/data/ValueAddedServicesDocs/data";
+
+
+# MESSAGES
+
+This set of endpoints allows you send messages, campaigns, statistics and status.
+
+### SEND MESSAGES
+
+This endpoint allows you to curate and send messages.
+
+<Accordion
+  items={sendMessageAPI}
+  parameters={true}
+  endpoint={"https://squadbygtco.com:8080/dashboard/message"}
+  method={"POST"}
+  header={"This API create and send Messages"}
+/>
+
+#### Sample Request
+
+```js
+{
+    "is_campaign": true, 
+    "reference": "abc_123",
+    "use_bucket": true,
+    "recipients": "1", 
+    "use_template": true,
+    "body": "1", 
+    "sender": "GTBank"
+}
+```
+
+### GET ALL CAMPAIGNS
+
+This endpoint allows you to retrieve all campaigns
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/template/by-client/2?page=1&count=10"}
+  method={"GET"}
+  header={"This API retrieves all Campaigns"}
+/>
+
+<AccordionCode items={getAllCampaignResponse} />
+
+### GET ALL CAMPAIGN STATISTICS
+
+This endpoint allows you retrieve the campaign messages themselves.
+
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/message/statistics/by-client/1?page=1&count=10"}
+  method={"GET"}
+  header={"This API retrieves campaign messages"}
+/>
+
+<AccordionCode items={getCampaignResponse} />
+
+### GET MESSAGES BY PHONE NUMBER 
+
+This endpoint allows you to retrieve messages using a phone number.
+
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/message/by-phone/0701234?page=1&count=20"}
+  method={"GET"}
+  header={"This API retrieves messages by phone number"}
+/>
+
+<AccordionCode items={getMessageByPhone} />
+
+### GET HOURLY STATISTICS 
+
+This endpoint allows you to get statistics by the hour of sent campaigns.
+
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/message.summary/hourly-statistics/by-client/2?date=2024-03-12"}
+  method={"GET"}
+  header={"This API retrieves statistics using hour of sent campaign "}
+/>
+
+<AccordionCode items={getHourlyStat} />

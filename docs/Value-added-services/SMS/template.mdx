@@ -1,0 +1,83 @@
+---
+sidebar_position: 2
+---
+
+import Accordion from "@site/src/components/Accordion";
+import AccordionCode from "@site/src/components/AccordionCode";
+import {
+  createTemplateAPI,
+  getTemplateResponse,
+  createTemplateResponse,
+  updateTemplateResponse,
+  deleteTemplateResponse,
+} from "@site/src/data/ValueAddedServicesDocs/data";
+
+
+# TEMPLATE
+
+#####   A Template is a pre defined message format which can be called over and again, without requiring to rewrite again.
+
+### CREATE TEMPLATE
+
+This endpoint allows you to create a bucket which contains all the phone numbers to be reached via sms.
+
+<Accordion
+  items={createTemplateAPI}
+  parameters={true}
+  endpoint={"https://squadbygtco.com:8080/dashboard/template"}
+  method={"POST"}
+  header={"This API creates SMS Bucket"}
+/>
+
+#### Sample Request
+
+```js
+{
+"name": "CHDP_C",
+        "body": "Txn: Credit\nAc:#$TXN_ACC$#\nAmt:#$AMOUNT$#\nDes:Cash Dep/_BRC_/#$OFS_ACC$#/#$TRANSACTION_ID$#\nDate:#$TXN_DATE$#\nBal#$CCY$##$AVAIL_BAL$#\n#$sms_advert#",
+        "client_id": 2,
+        "description":"CASH DEPOSIT CREDITING"
+}
+```
+
+<AccordionCode items={createTemplateResponse} />
+
+### GET ALL CREATED TEMPLATE
+
+This endpoint allows you to retrieve all created templates
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/template/by-client/2?page=1&count=10"}
+  method={"GET"}
+  header={"This API retrieves all Template"}
+/>
+
+<AccordionCode items={getTemplateResponse} />
+
+### UPDATE CREATED TEMPLATE
+
+This endpoint allows you to edit the body of a template.
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/template/3"}
+  method={"PATCH"}
+  header={"This API update template"}
+/>
+
+####    Sample Request
+```js
+{
+    "body": "Credit\nAc:#$OFS_ACC$#\nAmt:#$CCY$##$AMOUNT$#\nDes:AAC/Credit/Funds Transfer/#$TRANSACTION_ID$#\nDate:#$TXN_DATE$#\nBal:#$CCY$##$AVAIL_BAL$#\n#$sms_advert$#"
+}
+```
+
+<AccordionCode items={updateTemplateResponse} />
+
+### DELETE CREATED BUCKETS
+This endpoint allows you to delete a Template
+
+<Accordion
+  endpoint={"https://squadbygtco.com:8080/dashboard/bucket/1"}
+  method={"POST"}
+  header={"This API deletes created Template"}
+/>
+
+<AccordionCode items={deleteTemplateResponse} />
