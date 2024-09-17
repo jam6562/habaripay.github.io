@@ -308,6 +308,14 @@ a.menu__link.menu__link--sublist.menu__link--sublist-care {
   margin-bottom: 0 !important;
 }
 
+#__docusaurus_skipToContent_fallback > div > div > aside > div > div > button {
+  display: none !important;
+}
+
+#__docusaurus_skipToContent_fallback > div > div > aside > div > div > nav {
+  padding-top: 0.8rem;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
